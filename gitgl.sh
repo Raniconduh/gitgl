@@ -1,5 +1,14 @@
 #!/bin/sh
 
+if [ ! -d ~/.config/gitgl ]; then
+	mkdir -p ~/.config/gitgl
+fi
+
+if [ ! -f ~/.config/gitgl/bookmarks ]; then
+	touch ~/.config/gitgl/bookmarks
+fi
+
+
 pull_all() {
 	for repo in `cat ~/.config/gitgl/bookmarks`; do
 		echo "  > \033[32mPulling \033[35m$(echo $repo | awk -F/ '{print $(NF)}')\033[0m"
