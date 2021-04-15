@@ -33,9 +33,9 @@ if [ "$1" = '-h' -o "$1" = '--help' ]; then
 # add bookmark
 elif [ "$1" = '-a' -o "$1" = '--add' ]; then
 	if [ ! $2 ]; then
-		echo $PWD >> ~/.config/gitgl/bookmarks
+		echo "\n"$PWD >> ~/.config/gitgl/bookmarks
 	else
-		echo `realpath "$2"` >> ~/.config/gitgl/bookmarks
+		echo "\n"`realpath "$2"` >> ~/.config/gitgl/bookmarks
 	fi
 
 # delete bookmark
