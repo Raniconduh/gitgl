@@ -17,6 +17,14 @@ pull_all() {
 	done
 }
 
+collect_garbage() {
+	for repo in `cat ~/.config/gitgl/bookmarks`; do
+		echo "  > \033[32mCleaning Up \033[35m$(echo $repo | awk -F/ '{print $(NF)}')\033[0m"
+		cd $repo
+		git gc
+	done
+}
+
 my_help() {
 	echo "Usage: gitgl [-adhl] [DIRECTORY]"
 	echo "If no arguments are given, update the bookmarked directories"
@@ -24,6 +32,7 @@ my_help() {
 	echo "  -a, --add [DIRECTORY]       Add a bookmark. Set the bookmark to a directory if it is specified, otherwise the current directory"
 	echo "  -d, --del [DIRECTORY]       Delete a bookmark. If a directory is given, delete that. Otherwise delete the current directory"
 	echo "  -l, --list                  List the bookmarks"
+	echo "  -g, --clean                 Collect garbage in bookmarks"
 	echo "  -h, --help                  Show this screen and exit"
 }
 
@@ -63,5 +72,8 @@ elif [ "$1" = '-d' -o "$1" = '--del' ]; then
 elif [ "$1" = '-l' -o "$1" = '--list' ]; then
 	cat ~/.config/gitgl/bookmarks
 	echo
+elif [ "$1" = '-g' -o "$1" = '--clean' ]; then
+	collect_garbage
+	exit
 fi
 
