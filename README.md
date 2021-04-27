@@ -10,8 +10,9 @@ Run `gitgl` without any arguments to update all bookmarked repositories
 
 * `-a, --add [DIRECTORY]`        Bookmark the specified directory (or the current directory if one is not specified)
 * `-d, --del [DIRECTORY]`        Remove the bookmark pointing to the specified directory (or the current directory if one is not specified)
-* `-l, -list`	                 List the current bookmarks
+* `-g, --clean                   Collect garbage in bookmarks`
 * `-h, --help`                   Show the help menu
+* `-l, -list`	                 List the current bookmarks
 
 ## Installation
 
